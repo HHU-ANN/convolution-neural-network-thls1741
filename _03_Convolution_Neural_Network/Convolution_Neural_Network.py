@@ -43,7 +43,7 @@ class NeuralNetwork(nn.Module):
 
     def forward(self, x):
         x = self.features(x)
-        x = out.view(x.size(0), -1)
+        x = x.view(x.size(0), -1)
         x = self.classifier(x)
         return x
 
@@ -61,7 +61,6 @@ class NeuralNetwork(nn.Module):
 
         layers += [nn.AvgPool2d(kernel_size=1, stride=1)]
         return nn.Sequential(*layers)
-
 
 def read_data():
     # 这里可自行修改数据预处理，batch大小也可自行调整
